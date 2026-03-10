@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import DOMPurify from 'dompurify';
 
 export function Contact() {
     const [email, setEmail] = useState("");
@@ -26,28 +27,40 @@ export function Contact() {
             return;
         }
 
+        // Sanitização de Input (AppSec)
+        const sanitizedEmail = DOMPurify.sanitize(email);
+
         setIsSubmitting(true);
 
         try {
             // =========================================================================
-            // [APPSEC] IMPLEMENTAÇÃO ANTI-BOT DEVE SER FEITA NESTE PONTO
+            // [APPSEC] IMPLEMENTAÇÃO ANTI-BOT (Turnstile / reCAPTCHA)
             // =========================================================================
-            // Exemplo Turnstile / reCAPTCHA:
-            // 1. const token = await window.turnstile.getResponse();
-            // 2. if (!token) throw new Error("Validação de segurança falhou.");
-            // 3. Acrescentar 'token' no payload do fetch para o backend validar.
+            // Lógica estrutural para quando a chave for fornecida pelo cliente.
+            // Exemplo Turnstile:
+            // const token = await window.turnstile.getResponse();
+            // if (!token) {
+            //     throw new Error("Validação de segurança anti-bot falhou. Tente novamente.");
+            // }
+            // O payload do fetch abaixo deve incluir o 'token' para validação no backend.
             // =========================================================================
 
             // Simulando um delay da API
             await new Promise(resolve => setTimeout(resolve, 2000));
 
-            // Aqui iria o fetch('seu-endpoint', { method: 'POST', body: JSON.stringify({ email }) })
-            console.log("Formulário submetido com sucesso. E-mail sanitizado:", email);
-            setEmail("");
-            // Mostre uma mensagem de sucesso na tela para o usuário final.
+            // Simulação do fetch após validações
+            // await fetch('/api/contato', { 
+            //     method: 'POST', 
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ email: sanitizedEmail, 'cf-turnstile-response': token }) 
+            // });
 
-        } catch (err) {
-            setError("Ocorreu um erro ao processar sua solicitação.");
+            console.log("Formulário submetido com segurança. E-mail sanitizado:", sanitizedEmail);
+            setEmail("");
+            // Aqui você pode adicionar um estado de sucesso visual (toast, modal, etc.)
+
+        } catch (err: any) {
+            setError(err.message || "Ocorreu um erro ao processar sua solicitação.");
         } finally {
             setIsSubmitting(false);
         }

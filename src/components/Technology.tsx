@@ -36,54 +36,95 @@ export function Technology() {
                                 Visibilidade total de custos, desempenho, jornadas e rotas.
                             </p>
                         </div>
-                        <div className="w-full md:w-1/2 p-4 md:p-12 aspect-video flex items-center justify-center">
-                            <svg viewBox="0 0 800 600" className="w-full h-full object-cover rounded-[40px] shadow-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700">
-                                {/* Glowing background elements / tech waves */}
-                                <circle cx="400" cy="300" r="150" fill="none" stroke="#53a000" strokeWidth="2" strokeDasharray="4 8" className="animate-[spin_20s_linear_infinite]" opacity="0.5" />
-                                <circle cx="400" cy="300" r="220" fill="none" stroke="#8ae034" strokeWidth="1" strokeDasharray="2 12" className="animate-[spin_30s_linear_infinite_reverse]" opacity="0.3" />
+                        <div className="w-full md:w-3/5 relative group">
+                            <div className="absolute -inset-4 bg-verdio-green/5 rounded-[48px] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div className="polymer-card p-4 bg-white border border-slate-100 relative z-10">
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+                                    whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 1, ease: "easeOut" }}
+                                >
+                                    <svg viewBox="0 0 800 600" className="w-full h-auto rounded-[16px] bg-white overflow-hidden">
+                                        {/* Sidebar */}
+                                        <rect x="0" y="0" width="80" height="600" fill="#f8fafc" />
+                                        <circle cx="40" cy="50" r="20" fill="#53a000" />
+                                        {[1, 2, 3, 4, 5].map((i) => (
+                                            <rect key={i} x="20" y={100 + i * 60} width="40" height="40" rx="8" fill="#e2e8f0" />
+                                        ))}
 
-                                {/* Base Road/Platform */}
-                                <path d="M 100 450 L 700 450 L 750 550 L 50 550 Z" fill="#1e293b" opacity="0.8" />
-                                <path d="M 400 450 L 400 550" stroke="#53a000" strokeWidth="4" strokeDasharray="10 20" />
+                                        {/* Header */}
+                                        <rect x="80" y="0" width="720" height="80" fill="#ffffff" />
+                                        <line x1="80" y1="80" x2="800" y2="80" stroke="#f1f5f9" strokeWidth="2" />
+                                        <rect x="110" y="25" width="200" height="30" rx="15" fill="#f1f5f9" />
+                                        <circle cx="740" cy="40" r="20" fill="#f1f5f9" />
 
-                                {/* Truck Body */}
-                                <g transform="translate(150, 200)">
-                                    {/* Trailer */}
-                                    <path d="M 50 220 L 50 50 Q 50 30 70 30 L 300 30 L 300 220 Z" fill="#334155" />
-                                    <path d="M 60 40 L 290 40 L 290 210 L 60 210 Z" fill="#1e293b" />
-                                    {/* Data lines on Trailer */}
-                                    <rect x="80" y="80" width="180" height="4" fill="#53a000" opacity="0.3" />
-                                    <rect x="80" y="100" width="140" height="4" fill="#53a000" opacity="0.3" />
-                                    <rect x="80" y="120" width="160" height="4" fill="#53a000" opacity="0.3" />
-                                    <path d="M 230 180 L 270 180 L 280 160 L 260 160 Z" fill="#53a000" />
+                                        {/* Stats Widgets */}
+                                        <rect x="110" y="110" width="200" height="120" rx="16" fill="#f8fafc" stroke="#f1f5f9" />
+                                        <text x="135" y="150" fill="#94a3b8" className="text-[14px] font-bold">Consumo</text>
+                                        <text x="135" y="190" fill="#53a000" className="text-[28px] font-black">94.2%</text>
+                                        <rect x="135" y="205" width="150" height="4" rx="2" fill="#f1f5f9" />
+                                        <rect x="135" y="205" width="120" height="4" rx="2" fill="#53a000" />
 
-                                    {/* Wheels Trailer */}
-                                    <circle cx="100" cy="220" r="30" fill="#0f172a" stroke="#fff" strokeWidth="4" />
-                                    <circle cx="100" cy="220" r="15" fill="#334155" />
-                                    <circle cx="170" cy="220" r="30" fill="#0f172a" stroke="#fff" strokeWidth="4" />
-                                    <circle cx="170" cy="220" r="15" fill="#334155" />
+                                        <rect x="330" y="110" width="200" height="120" rx="16" fill="#f8fafc" stroke="#f1f5f9" />
+                                        <text x="355" y="150" fill="#94a3b8" className="text-[14px] font-bold">Frota Ativa</text>
+                                        <text x="355" y="190" fill="#1e293b" className="text-[28px] font-black">124</text>
+                                        <path d="M 450 170 L 470 150 L 490 170" stroke="#53a000" strokeWidth="3" fill="none" />
 
-                                    {/* Cabin */}
-                                    <path d="M 310 220 L 310 100 Q 310 80 330 80 L 380 80 Q 400 80 410 100 L 440 180 Q 450 200 450 220 Z" fill="#53a000" />
-                                    <path d="M 320 100 Q 320 90 330 90 L 375 90 Q 385 90 395 110 L 420 160 L 320 160 Z" fill="#e2e8f0" />
+                                        <rect x="550" y="110" width="140" height="120" rx="16" fill="#f8fafc" stroke="#f1f5f9" />
+                                        <circle cx="620" cy="165" r="35" fill="none" stroke="#f1f5f9" strokeWidth="8" />
+                                        <path d="M 620 130 A 35 35 0 0 1 655 165" fill="none" stroke="#53a000" strokeWidth="8" strokeLinecap="round" />
+                                        <text x="620" y="172" textAnchor="middle" fill="#1e293b" className="text-[12px] font-black">82%</text>
 
-                                    {/* Wheels Cabin */}
-                                    <circle cx="340" cy="220" r="30" fill="#0f172a" stroke="#fff" strokeWidth="4" />
-                                    <circle cx="340" cy="220" r="15" fill="#334155" />
-                                    <circle cx="410" cy="220" r="30" fill="#0f172a" stroke="#fff" strokeWidth="4" />
-                                    <circle cx="410" cy="220" r="15" fill="#334155" />
-                                </g>
+                                        {/* Main Chart Section */}
+                                        <rect x="110" y="250" width="580" height="310" rx="24" fill="#ffffff" stroke="#f1f5f9" strokeWidth="2" />
+                                        
+                                        {/* Grid Lines */}
+                                        {[0, 1, 2, 3].map((i) => (
+                                            <line key={i} x1="140" y1={300 + i * 70} x2="660" y2={300 + i * 70} stroke="#f1f5f9" strokeWidth="1" />
+                                        ))}
 
-                                {/* Digital Nodes/Connections over the truck */}
-                                <circle cx="480" cy="300" r="6" fill="#fff" className="animate-ping" />
-                                <circle cx="480" cy="300" r="3" fill="#53a000" />
+                                        {/* Data Line Chart */}
+                                        <path 
+                                            d="M 140 500 Q 200 450 250 480 T 350 400 T 450 460 T 550 350 T 660 380" 
+                                            fill="none" 
+                                            stroke="#53a000" 
+                                            strokeWidth="4" 
+                                            strokeLinecap="round"
+                                        />
+                                        <path 
+                                            d="M 140 500 Q 200 450 250 480 T 350 400 T 450 460 T 550 350 T 660 380 L 660 550 L 140 550 Z" 
+                                            fill="url(#chartGradient3)" 
+                                            opacity="0.15" 
+                                        />
 
-                                <circle cx="250" cy="260" r="6" fill="#fff" className="animate-ping delay-700" />
-                                <circle cx="250" cy="260" r="3" fill="#53a000" />
+                                        <defs>
+                                            <linearGradient id="chartGradient3" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stopColor="#53a000" />
+                                                <stop offset="100%" stopColor="#53a000" stopOpacity="0" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </motion.div>
 
-                                <path d="M 480 300 Q 550 200 650 250" fill="none" stroke="#53a000" strokeWidth="2" strokeDasharray="4 4" opacity="0.7" />
-                                <circle cx="650" cy="250" r="4" fill="#fff" />
-                            </svg>
+                                {/* Mini Overlapping Cards for Modal feel */}
+                                <motion.div 
+                                    className="absolute -right-10 top-1/2 -translate-y-1/2 bg-white p-4 rounded-3xl shadow-2xl z-20 border border-gray-100 hidden lg:block"
+                                    initial={{ x: 50, opacity: 0 }}
+                                    whileInView={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.5 }}
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-verdio-soft-green rounded-full flex items-center justify-center">
+                                            <div className="w-2 h-2 bg-verdio-green rounded-full animate-ping"></div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[10px] font-black text-gray-400 uppercase tracking-tighter">Status Frota</div>
+                                            <div className="text-sm font-black text-verdio-dark">100% ONLINE</div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -109,22 +150,82 @@ export function Technology() {
                                 segurança.
                             </p>
                         </div>
-                        <div className="w-full md:w-1/2 polymer-card p-10 bg-verdio-soft-green">
-                            <div className="space-y-4 font-secondary">
-                                <div className="bg-white p-4 rounded-2xl flex justify-between items-center">
-                                    <span className="text-sm font-bold">Otimização de Rota</span>
-                                    <span className="text-verdio-green font-black">
-                                        +14% Eficiência
-                                    </span>
+                        <div className="w-full md:w-1/2 relative group">
+                            <div className="absolute -inset-4 bg-blue-500/5 rounded-[48px] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div className="polymer-card p-8 bg-white border border-slate-100 relative z-10 overflow-hidden">
+                                <div className="flex justify-between items-center mb-8">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-verdio-soft-green rounded-xl flex items-center justify-center">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#53a000" strokeWidth="2.5">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                            </svg>
+                                        </div>
+                                        <span className="text-sm font-black text-verdio-dark uppercase tracking-tight">Relatório de Conformidade</span>
+                                    </div>
+                                    <div className="px-3 py-1 bg-verdio-green/10 text-verdio-green text-[10px] font-black rounded-full border border-verdio-green/20">
+                                        LEI 13.103/2015
+                                    </div>
                                 </div>
-                                <div className="bg-white p-4 rounded-2xl flex justify-between items-center">
-                                    <span className="text-sm font-bold">Risco de Sinistro</span>
-                                    <span className="text-blue-500 font-black">Baixo</span>
+
+                                <div className="space-y-6">
+                                    {/* Journey Timeline */}
+                                    <div className="bg-slate-50 p-4 rounded-2xl">
+                                        <div className="flex justify-between items-end mb-3">
+                                            <span className="text-[10px] font-bold text-gray-400 uppercase">Controle de Jornada</span>
+                                            <span className="text-xs font-black text-verdio-green">11:00h Descanso OK</span>
+                                        </div>
+                                        <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden flex">
+                                            <div className="h-full w-[35%] bg-verdio-green" title="Direção"></div>
+                                            <div className="h-full w-[10%] bg-blue-400" title="Espera"></div>
+                                            <div className="h-full w-[45%] bg-emerald-200" title="Descanso"></div>
+                                            <div className="h-full w-[10%] bg-verdio-green" title="Direção"></div>
+                                        </div>
+                                        <div className="flex justify-between mt-2">
+                                            <span className="text-[9px] text-gray-400 font-bold">06:00</span>
+                                            <span className="text-[9px] text-gray-400 font-bold">14:00</span>
+                                            <span className="text-[9px] text-gray-400 font-bold">22:00</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {/* Status Cards */}
+                                        <div className="bg-slate-50 p-4 rounded-2xl border border-transparent hover:border-verdio-green/20 transition-colors">
+                                            <div className="text-[10px] font-bold text-gray-400 uppercase mb-2">Toxicológico</div>
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-2 h-2 bg-verdio-green rounded-full shadow-[0_0_8px_rgba(83,160,0,0.6)]"></div>
+                                                <span className="text-sm font-black text-verdio-dark uppercase">Válido</span>
+                                            </div>
+                                        </div>
+                                        <div className="bg-slate-50 p-4 rounded-2xl border border-transparent hover:border-verdio-green/20 transition-colors">
+                                            <div className="text-[10px] font-bold text-gray-400 uppercase mb-2">Segurança</div>
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                                <span className="text-sm font-black text-verdio-dark uppercase">Score 98/100</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Checklist */}
+                                    <div className="space-y-3 pt-2">
+                                        {[
+                                            { label: 'Exames em Dia', status: true },
+                                            { label: 'Seguro de Carga RPW', status: true },
+                                            { label: 'Pagamento de Pedágio Vale', status: true }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="flex items-center justify-between group/item">
+                                                <span className="text-xs font-bold text-gray-500 group-hover/item:text-verdio-dark transition-colors">{item.label}</span>
+                                                <div className="w-5 h-5 bg-verdio-green rounded-full flex items-center justify-center">
+                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4">
+                                                        <polyline points="20 6 9 17 4 12" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className="bg-white p-4 rounded-2xl flex justify-between items-center opacity-40">
-                                    <span className="text-sm font-bold">Tempo de Ociosidade</span>
-                                    <span className="text-gray-400 font-black">2.4 min</span>
-                                </div>
+
+                                {/* Abstract decorative elements */}
+                                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-verdio-green/5 rounded-full blur-3xl"></div>
                             </div>
                         </div>
                     </motion.div>
